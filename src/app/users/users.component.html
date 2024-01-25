@@ -1,0 +1,32 @@
+<div class="container mt-3">
+  <h2>User List</h2>
+  <button
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#addUserModal"
+    (click)="addUser()"
+  >
+    Add New User
+  </button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Username</th>
+        <th>Created At</th>
+        <th>Action</th>
+        <!-- Add more headers for additional user properties -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.createdAt | date }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="editUser(user)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,67 @@
+<div class="card">
+  <div class="card-header">
+    <h3>{{ user._id ? "Edit" : "Add" }} User</h3>
+  </div>
+  <div class="card-body">
+    <alert type="danger" *ngIf="!!errorMessage">
+      {{ errorMessage }}
+    </alert>
+
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="firstName" class="form-label">First Name:</label>
+        <input
+          type="text"
+          id="firstName"
+          formControlName="firstName"
+          class="form-control"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name:</label>
+        <input
+          type="text"
+          id="lastName"
+          formControlName="lastName"
+          class="form-control"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="username" class="form-label">Username:</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          class="form-control"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control"
+        />
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="registrationForm.invalid"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary ms-1"
+        (click)="close()"
+      >
+        Close
+      </button>
+    </form>
+  </div>
+</div>

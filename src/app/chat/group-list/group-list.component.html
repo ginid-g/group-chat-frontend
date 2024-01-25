@@ -1,0 +1,10 @@
+<div class="list-group w-100">
+  <a
+    *ngFor="let item of data"
+    class="list-group-item list-group-item-action"
+    [class.active]="item._id === selectedGroup"
+    (click)="selectGroup(item._id)"
+  >
+    {{ item.name }}n</a
+  >
+</div>

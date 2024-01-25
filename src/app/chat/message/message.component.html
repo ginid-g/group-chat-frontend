@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <div
+        *ngFor="let message of messages"
+        [ngClass]="{ 'text-end': userId === message.createdBy }"
+      >
+        <div
+          class="alert"
+          [ngClass]="{
+            'alert-info': userId === message.createdBy,
+            'alert-secondary': userId !== message.createdBy
+          }"
+          role="alert"
+        >
+          <strong>
+            <span *ngIf="userId !== message.createdBy">
+              {{ message?.user?.firstName }}
+              {{ message?.user?.lastName }}
+            </span>
+
+            <span *ngIf="userId === message.createdBy"> You </span> </strong
+          >: {{ message.message }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input
+    *ngIf="!!groupId"
+    class="form-control"
+    type="text"
+    placeholder="Type a message..."
+    (keyup.enter)="sendMessage($event)"
+  />
+</div>

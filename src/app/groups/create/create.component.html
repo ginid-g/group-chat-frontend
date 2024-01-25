@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-header">
+    <h3>{{ group._id ? "Edit" : "Add" }} Group</h3>
+  </div>
+  <div class="card-body">
+    <alert type="danger" *ngIf="!!errorMessage">
+      {{ errorMessage }}
+    </alert>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          class="form-control"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="members" class="form-label">Members:</label>
+        <ng-select formControlName="members" [multiple]="true">
+          <ng-option *ngFor="let user of users" [value]="user._id"
+            >{{ user.firstName }} {{ user.lastName }}
+          </ng-option>
+        </ng-select>
+      </div>
+
+      <button type="submit" [disabled]="form.invalid" class="btn btn-primary">
+        Submit
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary ms-1"
+        (click)="close()"
+      >
+        Close
+      </button>
+    </form>
+  </div>
+</div>
